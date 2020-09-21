@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +20,7 @@
             android:layout_weight="1"
             android:backgroundTint="#FFFFFF"
             android:rotation="180"
-            android:tint="#BABABA"
+            android:tint="#8FCCFB"
             app:srcCompat="@android:drawable/ic_media_play" />
 
         <TextView
@@ -31,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            android:text="温度转换器"
+            android:text="简易计分器"
             android:textAlignment="center"
             android:textSize="16sp" />
 
@@ -46,60 +44,54 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="Team A"
         android:textAlignment="center"
-        android:textSize="32sp" />
+        android:textColor="#939393"
+        android:textSize="26dp" />
 
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+
         android:gravity="center_horizontal"
+        android:padding="20dp"
         android:textAlignment="center"
         android:textSize="64sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/value_hint"
+    <Button
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center_horizontal"
-        android:hint="请输入温度值"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:text="+3POINTS"
+        android:layout_margin="10dp"/>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
+        android:text="+2POINTS"
+        android:layout_margin="10dp"/>
 
-        <Button
-            android:id="@+id/celsius_to_fahren"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="摄氏转华氏"
-            android:textSize="20sp" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+1POINT"
+        android:layout_margin="10dp"/>
 
-        <Button
-            android:id="@+id/fahren_to_celsius"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="华氏转摄氏"
-            android:textSize="20sp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:text="RESET"
+        android:gravity="center"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
-

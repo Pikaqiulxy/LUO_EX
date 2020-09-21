@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Week2_ex1_温度转换器</string>
+    <string name="app_name">Android LUO EX</string>
     <string name="value_hint">请输入温度值</string>
     <string name="celsius_to_fahren">摄氏转华氏</string>
     <string name="fahren_to_celsius">华氏转摄氏</string>
