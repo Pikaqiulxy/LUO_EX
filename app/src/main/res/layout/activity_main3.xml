@@ -185,7 +185,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="154dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#FF9800"
         android:gravity="center"

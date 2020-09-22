@@ -69,6 +69,16 @@
             android:backgroundTint="#FF9800"
             android:text="WON"
             android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/CONFIG"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FF9800"
+            android:text="CONFIG"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

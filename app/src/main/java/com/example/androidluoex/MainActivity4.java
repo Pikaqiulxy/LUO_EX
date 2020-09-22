@@ -1,5 +1,6 @@
 package com.example.androidluoex;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,11 +9,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class MainActivity4 extends AppCompatActivity implements View.OnClickListener{
 
     private EditText hint;     //定义文本框
     private TextView tvResult;
-    private Button DOLLAR,EURO,WON;          //定义按钮
+    private Button DOLLAR,EURO,WON,CONFIG;          //定义按钮
     private float money=0;
 
     @Override
@@ -26,11 +29,13 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
         DOLLAR = (Button) findViewById(R.id.DOLLAR);
         EURO = (Button)findViewById(R.id.EURO);
         WON = (Button)findViewById(R.id.WON);
+        CONFIG = (Button)findViewById(R.id.CONFIG);
 
         //设置按钮点击监听
         DOLLAR.setOnClickListener(this);
         EURO.setOnClickListener(this);
         WON.setOnClickListener(this);
+        CONFIG.setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +52,21 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
             case R.id.WON:
                 money=getWON(rmb());
                 setTvResult();
+                break;
+            case R.id.CONFIG:
+
+                Intent config = new Intent(MainActivity4.this,MainActivity5.class);
+                float m1 = getDOLLAR(rmb());
+                float m2 = getEURO(rmb());
+                float m3 = getWON(rmb());
+                String mo1 = Float.toString(m1);
+                String mo2 = Float.toString(m2);
+                String mo3 = Float.toString(m3);
+                config.putExtra("DOLLAR",mo1);
+                config.putExtra("EURO",mo2);
+                config.putExtra("WON",mo3);
+                startActivity(config);
+
                 break;
             default:
         }
