@@ -83,6 +83,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         ShowText();
     }
     private void ShowText(){
+
         tvResult.setText(Integer.toString(Score));
     }
 
