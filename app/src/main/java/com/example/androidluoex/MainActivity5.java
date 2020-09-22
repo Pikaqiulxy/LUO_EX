@@ -45,8 +45,9 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
             case R.id.SAVE:
                 Intent back4 = new Intent();
                 back4.setClass(MainActivity5.this,MainActivity4.class);
-                //startActivityForResult(intent.code);
+                startActivityForResult(back4,666);
                 break;
+            default:
         }
     }
 
