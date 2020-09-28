@@ -2,6 +2,7 @@ package com.example.androidluoex;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,8 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity5 extends AppCompatActivity implements View.OnClickListener{
 
+    private static String Hello;
+    private static final String TAG = Hello;
     private EditText DOLLARtext,EUROtext,WONtext;
-    private Button SAVE;          //定义按钮
+    private Button SAVE;
+    private  TextView text_str1, text_str2, text_str3;//定义按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +35,9 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
 
         //显示
         Intent intent = getIntent();
-        TextView text_str1 = findViewById(R.id.DOLLARtext);
-        TextView text_str2 = findViewById(R.id.EUROtext);
-        TextView text_str3 = findViewById(R.id.WONtext);
+        text_str1 = findViewById(R.id.DOLLARtext);
+        text_str2 = findViewById(R.id.EUROtext);
+        text_str3 = findViewById(R.id.WONtext);
         DOLLARtext.setText(intent.getStringExtra("DOLLAR"));
         EUROtext.setText(intent.getStringExtra("EURO"));
         WONtext.setText(intent.getStringExtra("WON"));
@@ -43,9 +47,27 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.SAVE:
-                Intent back4 = new Intent();
-                back4.setClass(MainActivity5.this,MainActivity4.class);
-                startActivityForResult(back4,666);
+                //Intent back4 = new Intent();
+                //back4.setClass(MainActivity5.this,MainActivity4.class);
+
+                //到finish为止是setRsult的传值部分
+                //保存到Bundle或放入到Extra
+                Intent back4 = getIntent();
+                Bundle bdl = new Bundle();
+
+                float mo1 = Float.parseFloat(text_str1.getText().toString());
+                float mo2 = Float.parseFloat(text_str2.getText().toString());
+                float mo3 = Float.parseFloat(text_str3.getText().toString());
+
+                back4.putExtra("DOLLAR",mo1);
+                back4.putExtra("EURO",mo2);
+                back4.putExtra("WON",mo3);
+
+                back4.putExtras(bdl);
+                setResult(666,back4);//设置resultCode及带回的数据
+                //返回到调用页面
+                finish();
+
                 break;
             default:
         }

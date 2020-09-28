@@ -2,6 +2,7 @@ package com.example.androidluoex;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,11 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
     private TextView tvResult;
     private Button DOLLAR,EURO,WON,CONFIG;          //定义按钮
     private float money=0;
+    private float dollarRate = 6.8043f;
+    private float euroRate = 7.9971f;
+    private float wonRate = 0.005846f;
+    private static String Hel;
+    private static final String TAG = Hel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,20 +62,39 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
             case R.id.CONFIG:
 
                 Intent config = new Intent(MainActivity4.this,MainActivity5.class);
-                float m1 = getDOLLAR(rmb());
-                float m2 = getEURO(rmb());
-                float m3 = getWON(rmb());
+                //float m1 = getDOLLAR(rmb());
+                float m1 = dollarRate;
+                float m2 = euroRate;
+                float m3 = wonRate;
                 String mo1 = Float.toString(m1);
                 String mo2 = Float.toString(m2);
                 String mo3 = Float.toString(m3);
                 config.putExtra("DOLLAR",mo1);
                 config.putExtra("EURO",mo2);
                 config.putExtra("WON",mo3);
-                startActivity(config);
+                Log.i(TAG, "onActivityResult: dollarRate=" + dollarRate);
+                Log.i(TAG, "onActivityResult: euroRate=" + euroRate);
+                Log.i(TAG, "onActivityResult: wonRate=" + wonRate);
+                //startActivity(config);
+                startActivityForResult(config,666);
 
                 break;
             default:
         }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(requestCode==666 && resultCode==666){
+            Bundle bundle = data.getExtras();
+            dollarRate = bundle.getFloat("DOLLAR",0.1f);
+            euroRate = bundle.getFloat("EURO",0.1f);
+            wonRate = bundle.getFloat("WON",0.1f);
+            Log.i(TAG, "onActivityResult: dollarRate=" + dollarRate);
+            Log.i(TAG, "onActivityResult: euroRate=" + euroRate);
+            Log.i(TAG, "onActivityResult: wonRate=" + wonRate);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private float rmb(){
@@ -78,9 +103,9 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
         return r;
     }
 
-    private float getDOLLAR(float d){return(d/6.8043f); }
-    private float getEURO(float e){return(e/7.9971f); }
-    private float getWON(float w){return(w/0.005846f); }
+    private float getDOLLAR(float d){return(d/dollarRate); }
+    private float getEURO(float e){return(e/euroRate); }
+    private float getWON(float w){return(w/wonRate); }
 
     private void setTvResult(){
         tvResult.setText(Float.toString(money));
