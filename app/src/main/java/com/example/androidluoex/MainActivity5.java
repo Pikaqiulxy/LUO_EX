@@ -1,12 +1,13 @@
 package com.example.androidluoex;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
     private EditText DOLLARtext,EUROtext,WONtext;
     private Button SAVE;
     private  TextView text_str1, text_str2, text_str3;//定义按钮
+    private float mo1,mo2,mo3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,9 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
                 Intent back4 = getIntent();
                 Bundle bdl = new Bundle();
 
-                float mo1 = Float.parseFloat(text_str1.getText().toString());
-                float mo2 = Float.parseFloat(text_str2.getText().toString());
-                float mo3 = Float.parseFloat(text_str3.getText().toString());
+                mo1 = Float.parseFloat(text_str1.getText().toString());
+                mo2 = Float.parseFloat(text_str2.getText().toString());
+                mo3 = Float.parseFloat(text_str3.getText().toString());
 
                 back4.putExtra("DOLLAR",mo1);
                 back4.putExtra("EURO",mo2);
@@ -66,6 +68,7 @@ public class MainActivity5 extends AppCompatActivity implements View.OnClickList
                 back4.putExtras(bdl);
                 setResult(666,back4);//设置resultCode及带回的数据
                 //返回到调用页面
+
                 finish();
 
                 break;

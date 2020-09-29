@@ -1,7 +1,10 @@
 package com.example.androidluoex;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -58,6 +61,7 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
             case R.id.WON:
                 money=getWON(rmb());
                 setTvResult();
+
                 break;
             case R.id.CONFIG:
 
@@ -75,6 +79,23 @@ public class MainActivity4 extends AppCompatActivity implements View.OnClickList
                 Log.i(TAG, "onActivityResult: dollarRate=" + dollarRate);
                 Log.i(TAG, "onActivityResult: euroRate=" + euroRate);
                 Log.i(TAG, "onActivityResult: wonRate=" + wonRate);
+
+                SharedPreferences sharedPreferences =
+                        getSharedPreferences("myrate", Activity.MODE_PRIVATE);
+                PreferenceManager.getDefaultSharedPreferences(this);
+                dollarRate = sharedPreferences.getFloat("dollarRate",1.0f);
+                euroRate = sharedPreferences.getFloat("euroRate",1.0f);
+                wonRate = sharedPreferences.getFloat("wonRate",1.0f);
+
+                SharedPreferences sp =
+                        getSharedPreferences("myrate",
+                                Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putFloat("dollarRate",1.0f);
+                editor.putFloat("euroRate",1.0f);
+                editor.putFloat("wonRate",1.0f);
+                editor.apply();
+
                 //startActivity(config);
                 startActivityForResult(config,666);
 
