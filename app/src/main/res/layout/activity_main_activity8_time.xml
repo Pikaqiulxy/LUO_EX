@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tools:LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".MainActivity8Time">
+
+    <TextView
+        android:id="@+id/func4_text_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:text="@string/main_text_3"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp" />
+
+    <EditText
+        android:id="@+id/func4_text_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/func3_text_2"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/func4_text_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/func1_text_3"
+        android:textColor="@android:color/tertiary_text_light"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/func4_btn_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:onClick="count"
+        android:text="@string/func3_btn_1" />
+
+    <Button
+        android:id="@+id/func4_btn_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:onClick="count"
+        android:text="@string/func3_btn_2" />
+
+    <Button
+        android:id="@+id/func4_btn_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorAccent"
+        android:onClick="count"
+        android:text="@string/func3_btn_3"
+        android:textColor="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/func4_text_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/func4_text_4"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp" />
+</tools:LinearLayout>

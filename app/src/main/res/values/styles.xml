@@ -7,4 +7,35 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <string name="main_text_1">Centigrade to Fahrenheit</string>
+    <string name="main_text_2">Score Indicator</string>
+    <string name="main_text_3">Currency Exchange</string>
+    <string name="main_text_4">Currency Exchange v2.0</string>
+    <string name="main_btn_1">start</string>
+
+    <string name="func1_text_2">input ℃</string>
+    <string name="func1_text_3">RESULT AREA</string>
+    <string name="func1_btn_1">show</string>
+
+    <string name="func2_text_2">0</string>
+    <string name="func2_text_3">0</string>
+    <string name="func2_text_4">Team A</string>
+    <string name="func2_text_5">Team B</string>
+    <string name="func2_btn_1">add 1 point</string>T
+    <string name="func2_btn_2">add 2 point</string>
+    <string name="func2_btn_3">add 3 point</string>
+    <string name="func2_btn_4">reset</string>
+
+    <string name="func3_text_2">input RMB</string>
+    <string name="func3_btn_1">dollar</string>
+    <string name="func3_btn_2">euro</string>
+    <string name="func3_btn_3">won</string>
+    <string name="func3_btn_4">modify rate</string>
+
+    <string name="func32_btn_1">save</string>
+    <string name="func32_btn_2">saveSP</string>
+
+    <string name="func4_text_4">Current exchange rate loading...</string>
+
 </resources>
+
