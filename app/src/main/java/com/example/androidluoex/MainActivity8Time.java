@@ -54,19 +54,22 @@ public class MainActivity8Time extends AppCompatActivity implements Runnable{
         setContentView(R.layout.activity_main_activity8_time);
         tv2 = findViewById(R.id.func4_text_2);
 
-        //用于存取数据
+        //新建文件和更改xml数据
         sharedPreferences = getSharedPreferences("myrate", Activity.MODE_PRIVATE);
-
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
         //从xml文件中取出上次更新的日期,若日期相同则不启动更新
         Date today = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         todayString = format.format(today);
+
         updateDate = sharedPreferences.getString("update_date", "");
         Log.i(TAG, "onCreate: 不需要更新, 上次更新日期" + updateDate);
 
         if (!updateDate.equals(todayString)) {
             Log.i(TAG, "onCreate: 需要更新, 上次更新日期" + updateDate);
+            editor.putString("update_date", todayString);
+            editor.apply();
             Thread t = new Thread(MainActivity8Time.this);
             t.start();
         }
