@@ -1,7 +1,10 @@
 package com.example.androidluoex;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.arch.core.internal.FastSafeIterableMap;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,7 +31,7 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity7ListMap extends AppCompatActivity implements Runnable,AdapterView.OnItemClickListener{
+public class MainActivity7ListMap extends AppCompatActivity implements Runnable, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private static final String TAG = "MainActivity7ListMap";
 
@@ -36,6 +39,8 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
     List<HashMap<String, String>> listItems;
     List<HashMap<String, String>> listData;
     ListView listView;
+
+    MyAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,8 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
                             R.layout.list_item,
                             (ArrayList<HashMap<String, String>>) listData);
                     listView.setAdapter(myAdapter);
+                    listView.setOnItemClickListener(MainActivity7ListMap.this);
+                    listView.setOnItemLongClickListener(MainActivity7ListMap.this);
                 }
                 super.handleMessage(msg);
             }
@@ -105,6 +112,23 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
         handler.sendMessage(msg);
     }
 
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+        //长按按钮出现提示框,点击确定,确认删除当前选中的数据
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity7ListMap.this);
+        builder.setTitle("提示")
+                .setMessage("请确认是否删除当前数据")
+                .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Log.i(TAG, "onClick: 点击了确认按钮");
+                        myAdapter.remove(listView.getItemAtPosition(position));
+                    }
+                }).setNegativeButton("否",null);
+        builder.create().show();
+        return true;
+    }
+
     public static String inputStream2String (InputStream inputStream) throws IOException {
         final int bufferSize = 1024;
         final char[] buffer = new char[bufferSize];
@@ -151,8 +175,9 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
         Intent intent = new Intent();
         intent.setClass(MainActivity7ListMap.this,MainActivity7ListMap2.class);
         Bundle bundle = new Bundle();           //为bundle分配
-        bundle.putString("title2","title2");     //转入bundle
-        bundle.putString("detail2","detail2");     //转入bundle
+        bundle.putString("title2",title2);     //转入bundle
+        bundle.putString("detail2",detail2);     //转入bundle
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
