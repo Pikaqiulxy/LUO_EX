@@ -31,7 +31,7 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity7ListMap extends AppCompatActivity implements Runnable, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+public class MainActivity7ListMap extends AppCompatActivity implements Runnable, AdapterView.OnItemClickListener {
 
     private static final String TAG = "MainActivity7ListMap";
 
@@ -63,7 +63,7 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
                             (ArrayList<HashMap<String, String>>) listData);
                     listView.setAdapter(myAdapter);
                     listView.setOnItemClickListener(MainActivity7ListMap.this);
-                    listView.setOnItemLongClickListener(MainActivity7ListMap.this);
+                    //listView.setOnItemLongClickListener(MainActivity7ListMap.this);
                 }
                 super.handleMessage(msg);
             }
@@ -110,23 +110,6 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
         Message msg = handler.obtainMessage(7);
         msg.obj = listData;
         handler.sendMessage(msg);
-    }
-
-    @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
-        //长按按钮出现提示框,点击确定,确认删除当前选中的数据
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity7ListMap.this);
-        builder.setTitle("提示")
-                .setMessage("请确认是否删除当前数据")
-                .setPositiveButton("是", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        Log.i(TAG, "onClick: 点击了确认按钮");
-                        myAdapter.remove(listView.getItemAtPosition(position));
-                    }
-                }).setNegativeButton("否",null);
-        builder.create().show();
-        return true;
     }
 
     public static String inputStream2String (InputStream inputStream) throws IOException {
@@ -180,5 +163,25 @@ public class MainActivity7ListMap extends AppCompatActivity implements Runnable,
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    /*
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+        //长按按钮出现提示框,点击确定,确认删除当前选中的数据
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity7ListMap.this);
+        builder.setTitle("提示")
+                .setMessage("请确认是否删除当前数据")
+                .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        Log.i(TAG, "onClick: 点击了确认按钮");
+                        myAdapter.remove(listView.getItemAtPosition(position));
+                    }
+                }).setNegativeButton("否",null);
+        builder.create().show();
+        return true;
+    }
+
+ */
 
 }
